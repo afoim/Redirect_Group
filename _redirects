@@ -1,8 +1,10 @@
-/ https://www.2x.nz/ 301
-/tit https://www.2x.nz/posts/pin/ 301
-/ak https://akile.io/register?aff_code=503fe5ea-e7c5-4d68-ae05-6de99513680e 301
-/yyb https://www.rainyun.com/acofork_?s=bilibili 301
+/ https://www.2x.nz/ 302
+/tit https://www.2x.nz/posts/pin/ 302
+/ak https://akile.io/register?aff_code=503fe5ea-e7c5-4d68-ae05-6de99513680e 302
+/yyb https://www.rainyun.com/acofork_?s=bilibili 302
 /test/* https://test.test/test/:splat 302
-/wly https://wl.awcmam.com/#/register?code=FNQwOQBM 301
-/mly https://muleyun.com/aff/GOTRJLPN
-/tly https://tianlicloud.cn/aff/HNNCFKGP
+/wly https://wl.awcmam.com/#/register?code=FNQwOQBM 302
+/mly https://muleyun.com/aff/GOTRJLPN 302
+/tly https://tianlicloud.cn/aff/HNNCFKGP 302
+
+/* https://www.2x.nz/:splat 302
