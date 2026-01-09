@@ -1,0 +1,38 @@
+name: Remove Malicious Links
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Run cleaning script
+        run: |
+          python .github/scripts/clean_redirects.py _redirects
+          
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status -s) ]]; then
+            git add _redirects
+            git commit -m "Auto-remove malicious links [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
