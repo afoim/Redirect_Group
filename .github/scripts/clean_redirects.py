@@ -37,7 +37,12 @@ def is_malicious(url):
             'onerror=',
             'onload=',
             'eval(',
-            '__proto__'
+            '__proto__',
+            'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.in',
+            '%25%25%25%',
+            '%%%',
+            'cfw-shorter.2x.nz',
+            's.2x.nz'
         ]
         
         for keyword in dangerous_keywords:
@@ -92,6 +97,7 @@ def clean_redirects(file_path):
     print(f"Scanning {file_path}...")
     clean_lines = []
     malicious_count = 0
+    inside_auto_update = False
     
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -99,20 +105,32 @@ def clean_redirects(file_path):
             
         for line in lines:
             line_content = line.strip()
-            if not line_content or line_content.startswith('#'):
+            
+            # Check for marker
+            if line_content == '###AUTO-UPDATE###':
+                inside_auto_update = not inside_auto_update
                 clean_lines.append(line)
                 continue
-                
-            parts = line_content.split()
-            # Format usually: /path target [status]
-            if len(parts) >= 2:
-                target = parts[1]
-                if is_malicious(target):
-                    print(f"MATCHED MALICIOUS: {line_content}")
-                    malicious_count += 1
-                    continue
             
-            clean_lines.append(line)
+            # Only process if inside the auto-update block
+            if inside_auto_update:
+                if not line_content or line_content.startswith('#'):
+                    clean_lines.append(line)
+                    continue
+                    
+                parts = line_content.split()
+                # Format usually: /path target [status]
+                if len(parts) >= 2:
+                    target = parts[1]
+                    if is_malicious(target):
+                        print(f"MATCHED MALICIOUS: {line_content}")
+                        malicious_count += 1
+                        continue
+                
+                clean_lines.append(line)
+            else:
+                # Outside the block, keep everything as is
+                clean_lines.append(line)
             
         if malicious_count > 0:
             print(f"Found and removed {malicious_count} malicious lines.")
