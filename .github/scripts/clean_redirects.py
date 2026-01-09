@@ -41,8 +41,7 @@ def is_malicious(url):
             'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.in',
             '%25%25%25%',
             '%%%',
-            'cfw-shorter.2x.nz',
-            's.2x.nz'
+            'cfw-shorter.2x.nz'
         ]
         
         for keyword in dangerous_keywords:
